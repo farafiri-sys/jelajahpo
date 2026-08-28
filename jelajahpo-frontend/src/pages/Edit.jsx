@@ -1,14 +1,14 @@
 import { useEffect, useState } from "react";
 
-export default function Kategori() {
-    const [kategori, setKategori] = useState([]);
+export default function Wisata() {
+    const [wisata, setWisata] = useState([]);
     const [loading, setLoading] = useState(true);
 
-    const getKategori = async () => {
+    const getWisata = async () => {
         try {
-            const res = await fetch("http://localhost:4000/kategori");
+            const res = await fetch("http://localhost:4000/wisata");
             const data = await res.json();
-            setKategori(data);
+            setWisata(data);
         } catch (err) {
             console.error("Gagal fetch data:", err);
         } finally {
@@ -17,7 +17,7 @@ export default function Kategori() {
     };
 
     useEffect(() => {
-        getKategori();
+        getWisata();
     }, []);
 
     if (loading) {
@@ -27,26 +27,31 @@ export default function Kategori() {
     return (
         <div className="container mt-4">
             <div className="d-flex justify-content-between align-items-center mb-3">
-                <h2>Daftar Kategori JelajahPo</h2>
+                <h2>Daftar Wisata JelajahPo</h2>
             </div>
+
             <table className="table table-bordered table-striped">
                 <thead className="table-primary">
                     <tr>
                         <th>ID</th>
-                        <th>Nama Kategori</th>
+                        <th>Nama Wisata</th>
+                        <th>Deskripsi</th>
+                        <th>Harga Tiket</th>
                     </tr>
                 </thead>
                 <tbody>
-                    {kategori.length > 0 ? (
-                        kategori.map((item) => (
-                            <tr key={item.id_kategori}>
-                                <td>{item.id_kategori}</td>
-                                <td>{item.kategori}</td>
+                    {wisata.length > 0 ? (
+                        wisata.map((item) => (
+                            <tr key={item.id_wisata}>
+                                <td>{item.id_wisata}</td>
+                                <td>{item.nama_wisata}</td>
+                                <td>{item.deskripsi}</td>
+                                <td>Rp {item.harga_tiket}</td>
                             </tr>
                         ))
-                    ) : (
+                    ):(
                         <tr>
-                            <td colSpan="4" className="text-center">Belum ada kategori</td>
+                            <td colSpan="4" className="text-center">Belum ada wisata</td>
                         </tr>
                     )}
                 </tbody>
