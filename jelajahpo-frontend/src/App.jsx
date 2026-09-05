@@ -4,6 +4,7 @@ import Home from "./pages/Home";
 import Wisata from "./pages/Wisata";
 import Kategori from "./pages/Kategori";
 import AddWisata from "./pages/AddWisata";
+import EditWisata from "./pages/EditWisata";
 
 export default function App() {
   return (
@@ -13,6 +14,7 @@ export default function App() {
           <Route index element={<Home />} />
           <Route path="wisata" element={<Wisata />} />
           <Route path="wisata/tambah" element={<AddWisata />} />
+          <Route path="wisata/edit/:id" element={<EditWisata />} />
           <Route path="kategori" element={<Kategori />} />
         </Route>
       </Routes>

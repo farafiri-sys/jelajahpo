@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 export default function Sidebar() {
     return(
-        <div className="bg-light p-3 border-end col-1 min-vh-100">
+        <div className="bg-light p-3 border-end col-2 min-vh-100">
             <ul className="nav flex-column">
                 <li className="nav-item">
                     <Link to="/wisata" className="btn btn-link text-start w-100">Wisata</Link>

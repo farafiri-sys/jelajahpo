@@ -71,6 +71,15 @@ app.get('/wisata', (req, res) => {
     });
 });
 
+app.get('/wisata/:id_wisata', (req, res) => {
+    const { id_wisata } = req.params;
+    const sql = 'SELECT * FROM wisata WHERE id_wisata=?';
+    db.query(sql, [id_wisata], (err, results) => {
+        if (err) return res.status(500).json({ error: err });
+        res.json(results);
+    });
+});
+
 app.post('/wisata', (req, res) => {
     const { nama_wisata, deskripsi, harga_tiket, id_kategori } = req.body;
 
