@@ -28,6 +28,9 @@ export default function Wisata() {
             try {
                 const res = await fetch(`http://localhost:5000/wisata/${id}`, {
                     method: "DELETE",
+                    headers: {
+                        Authorization: `Bearer ${localStorage.getItem("token")}`,
+                    },
                 });
                 if (res.ok) {
                     alert("Wisata berhasil dihapus");

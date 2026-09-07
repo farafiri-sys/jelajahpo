@@ -43,9 +43,14 @@ export default function EditWisata() {
             return;
         }
 
+        const token = localStorage.getItem("token")
+
         await fetch(`http://localhost:4000/wisata/${id}`, {
             method: "PUT",
-            headers: { "Content-Type": "application/json" },
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${token}`
+            },
             body: JSON.stringify(formData),
         });
         alert("Wisata berhasil diperbarui!");
